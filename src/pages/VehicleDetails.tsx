@@ -40,7 +40,7 @@ const vehicleData = {
     'Caméra de recul',
     'Régulateur de vitesse adaptatif',
     'Système audio premium',
-    'Détecteur d'angle mort',
+    'Détecteur d\'angle mort',
     'Assistance au stationnement',
     'Démarrage sans clé'
   ]
