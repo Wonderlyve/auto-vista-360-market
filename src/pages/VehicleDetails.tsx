@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import Navbar from '@/components/Navbar';
 import { MessageCircle, Car } from 'lucide-react';
+import VehicleViewer360 from '@/components/VehicleViewer360';
 
 // Mock vehicle data
 const vehicleData = {
@@ -65,6 +66,7 @@ const VehicleDetails = () => {
   const handleContactSeller = () => {
     console.log('Contact seller for vehicle:', id);
     // In a real app, this would open a chat or contact form
+    window.location.href = `/chat/${id}`;
   };
   
   if (loading) {
@@ -151,19 +153,13 @@ const VehicleDetails = () => {
             </TabsContent>
             
             <TabsContent value="view360" className="m-0">
-              <div className="h-[300px] sm:h-[400px] md:h-[500px] bg-gray-100 flex items-center justify-center">
+              <div className="h-[300px] sm:h-[400px] md:h-[500px] bg-gray-100">
                 {vehicle.has360 ? (
-                  <div className="text-center">
-                    <p className="text-lg mb-2">Vue 360° interactive</p>
-                    <div className="mx-auto bg-autovista-teal/10 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                      <Car className="h-8 w-8 text-autovista-teal animate-pulse" />
-                    </div>
-                    <p className="text-sm text-autovista-dark-gray">
-                      Dans une version complète, cette section afficherait une vue interactive 360° du véhicule.
-                    </p>
-                  </div>
+                  <VehicleViewer360 vehicleId={vehicle.id} />
                 ) : (
-                  <p>Vue 360° non disponible pour ce véhicule</p>
+                  <div className="h-full flex items-center justify-center">
+                    <p>Vue 360° non disponible pour ce véhicule</p>
+                  </div>
                 )}
               </div>
             </TabsContent>
