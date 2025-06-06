@@ -11,6 +11,10 @@ import SellerDashboard from "./pages/SellerDashboard";
 import Chat from "./pages/Chat";
 import Vendre from "./pages/Vendre";
 import Vehicules from "./pages/Vehicules";
+import About from "./pages/About";
+import Login from "./pages/Login";
+import ViewAll from "./pages/ViewAll";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +31,10 @@ const App = () => (
           <Route path="/chat/:id" element={<Chat />} />
           <Route path="/vendre" element={<Vendre />} />
           <Route path="/vehicules" element={<Vehicules />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/view-all" element={<ViewAll />} />
+          <Route path="/profile" element={<Profile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

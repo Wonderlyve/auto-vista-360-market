@@ -21,8 +21,9 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Accueil</Link>
-            <Link to="/vehicles" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Véhicules</Link>
-            <Link to="/sell" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Vendre</Link>
+            <Link to="/vehicules" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Véhicules</Link>
+            <Link to="/view-all" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Voir tout</Link>
+            <Link to="/vendre" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Vendre</Link>
             <Link to="/about" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">À Propos</Link>
           </div>
           
@@ -62,8 +63,9 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden py-3 space-y-3 animate-fade-in">
             <Link to="/" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Accueil</Link>
-            <Link to="/vehicles" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Véhicules</Link>
-            <Link to="/sell" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Vendre</Link>
+            <Link to="/vehicules" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Véhicules</Link>
+            <Link to="/view-all" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Voir tout</Link>
+            <Link to="/vendre" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Vendre</Link>
             <Link to="/about" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">À Propos</Link>
             <div className="flex space-x-2">
               <Link to="/dashboard" className="flex-1">
