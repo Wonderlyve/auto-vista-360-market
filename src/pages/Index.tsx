@@ -1,24 +1,65 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import VehicleCard from '@/components/VehicleCard';
-import FeaturedVehicle from '@/components/FeaturedVehicle';
+import FeaturedVehiclesCarousel from '@/components/FeaturedVehicle';
 import SearchFilters from '@/components/SearchFilters';
 import { Link } from 'react-router-dom';
 import { Car, Users, MessageCircle } from 'lucide-react';
 
-// Mock data
-const featuredVehicle = {
-  id: '1',
-  title: 'Mercedes-Benz E 220d AMG Line',
-  image: 'https://images.unsplash.com/photo-1554223090-7e482851df45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80',
-  price: 49990,
-  year: 2023,
-  mileage: 15000,
-  location: 'Paris',
-  has360: true
-};
+// Mock data pour le carousel de véhicules vedettes
+const featuredVehicles = [
+  {
+    id: '1',
+    title: 'Mercedes-Benz E 220d AMG Line',
+    image: 'https://images.unsplash.com/photo-1554223090-7e482851df45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80',
+    price: 49990,
+    year: 2023,
+    mileage: 15000,
+    location: 'Paris',
+    has360: true
+  },
+  {
+    id: '2',
+    title: 'BMW Série 4 Gran Coupé',
+    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    price: 45500,
+    year: 2022,
+    mileage: 28000,
+    location: 'Lyon',
+    has360: true
+  },
+  {
+    id: '3',
+    title: 'Audi A3 Sportback',
+    image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2664&q=80',
+    price: 32900,
+    year: 2021,
+    mileage: 35000,
+    location: 'Marseille',
+    has360: false
+  },
+  {
+    id: '4',
+    title: 'Tesla Model 3',
+    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    price: 39900,
+    year: 2021,
+    mileage: 25000,
+    location: 'Lille',
+    has360: false
+  },
+  {
+    id: '5',
+    title: 'Peugeot 3008',
+    image: 'https://images.unsplash.com/photo-1619767886558-efdc7e9e8eb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2342&q=80',
+    price: 29900,
+    year: 2020,
+    mileage: 48000,
+    location: 'Bordeaux',
+    has360: true
+  }
+];
 
 const recentVehicles = [
   {
@@ -96,9 +137,9 @@ const Index = () => {
     <div className="min-h-screen bg-autovista-light-gray">
       <Navbar />
       
-      {/* Hero Section */}
+      {/* Hero Section with Carousel */}
       <section className="container mx-auto px-4 py-8">
-        <FeaturedVehicle {...featuredVehicle} />
+        <FeaturedVehiclesCarousel vehicles={featuredVehicles} />
       </section>
       
       {/* Search Section */}
@@ -111,7 +152,7 @@ const Index = () => {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-autovista-blue">Véhicules récents</h2>
           <Button asChild variant="outline">
-            <Link to="/vehicles">Voir tous</Link>
+            <Link to="/view-all">Voir tous</Link>
           </Button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
