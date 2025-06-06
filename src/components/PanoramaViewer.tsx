@@ -28,15 +28,11 @@ const PanoramaViewer = ({
       const viewer = new Viewer({
         container: containerRef.current,
         panorama: imageUrl,
-        width: '100%',
-        height: '500px',
         // Configuration pour une expérience optimale
         defaultZoomLvl: 0,
         minFov: 30,
         maxFov: 90,
-        mousewheel: true,
-        mousemove: true,
-        touchmove: true,
+        mousewheelCtrlKey: false,
         // Interface utilisateur
         navbar: [
           'autorotate',
@@ -49,18 +45,16 @@ const PanoramaViewer = ({
         // Configuration des contrôles
         moveSpeed: 1.0,
         zoomSpeed: 1.0,
-        // Style de la barre de navigation
-        navbarVariant: 'standard',
       });
 
       viewerRef.current = viewer;
 
       // Gérer les événements du viewer
-      viewer.on('ready', () => {
+      viewer.addEventListener('ready', () => {
         console.log('Panorama viewer ready');
       });
 
-      viewer.on('position-updated', (e) => {
+      viewer.addEventListener('position-updated', (e) => {
         // Optionnel: tracker la position de l'utilisateur
         console.log('Position updated:', e);
       });
