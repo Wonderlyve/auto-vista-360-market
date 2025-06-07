@@ -53,7 +53,6 @@ const VehicleDetails = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [vehicle, setVehicle] = useState(vehicleData);
   const [loading, setLoading] = useState(true);
-  // Mettre la vue 360° en premier par défaut
   const [activeTab, setActiveTab] = useState(searchParams.get('view') === 'gallery' ? 'gallery' : 'view360');
   
   useEffect(() => {
@@ -72,12 +71,12 @@ const VehicleDetails = () => {
   
   if (loading) {
     return (
-      <div className="min-h-screen bg-autovista-light-gray pb-16 md:pb-0">
+      <div className="min-h-screen bg-gray-50 pb-16 md:pb-0">
         <Navbar />
         <div className="container mx-auto px-4 py-8 flex justify-center items-center h-[60vh]">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-autovista-blue mx-auto mb-4"></div>
-            <p className="text-autovista-dark-gray">Chargement des détails du véhicule...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Chargement des détails du véhicule...</p>
           </div>
         </div>
       </div>
@@ -85,7 +84,7 @@ const VehicleDetails = () => {
   }
   
   return (
-    <div className="min-h-screen bg-autovista-light-gray pb-16 md:pb-0">
+    <div className="min-h-screen bg-gray-50 pb-16 md:pb-0">
       <Navbar />
       <div className="container mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -93,8 +92,8 @@ const VehicleDetails = () => {
           <div className="p-4 sm:p-6 border-b">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center">
               <div>
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-autovista-blue">{vehicle.title}</h1>
-                <div className="flex items-center mt-2 text-sm sm:text-base text-autovista-dark-gray">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600">{vehicle.title}</h1>
+                <div className="flex items-center mt-2 text-sm sm:text-base text-gray-600">
                   <span>Année {vehicle.year}</span>
                   <span className="mx-2">•</span>
                   <span>{vehicle.mileage.toLocaleString()} km</span>
@@ -103,7 +102,7 @@ const VehicleDetails = () => {
                 </div>
               </div>
               <div className="mt-4 md:mt-0">
-                <p className="text-2xl sm:text-3xl font-bold text-autovista-blue">{vehicle.price.toLocaleString()} €</p>
+                <p className="text-2xl sm:text-3xl font-bold text-blue-600">{vehicle.price.toLocaleString()} €</p>
               </div>
             </div>
           </div>
@@ -151,7 +150,7 @@ const VehicleDetails = () => {
                   <div 
                     key={index} 
                     className={`w-20 h-20 flex-shrink-0 rounded cursor-pointer border-2 ${
-                      index === activeImage ? 'border-autovista-teal' : 'border-transparent'
+                      index === activeImage ? 'border-blue-600' : 'border-transparent'
                     }`}
                     onClick={() => setActiveImage(index)}
                   >
@@ -171,40 +170,40 @@ const VehicleDetails = () => {
             {/* Left Column - Vehicle Details */}
             <div className="lg:col-span-2">
               <h2 className="text-xl font-semibold mb-4">Description</h2>
-              <p className="text-autovista-dark-gray mb-6">{vehicle.description}</p>
+              <p className="text-gray-600 mb-6">{vehicle.description}</p>
               
               <h2 className="text-xl font-semibold mb-4">Caractéristiques</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6">
                 <div className="flex justify-between border-b pb-2">
-                  <span className="text-autovista-dark-gray">Année</span>
+                  <span className="text-gray-600">Année</span>
                   <span className="font-medium">{vehicle.year}</span>
                 </div>
                 <div className="flex justify-between border-b pb-2">
-                  <span className="text-autovista-dark-gray">Kilométrage</span>
+                  <span className="text-gray-600">Kilométrage</span>
                   <span className="font-medium">{vehicle.mileage.toLocaleString()} km</span>
                 </div>
                 <div className="flex justify-between border-b pb-2">
-                  <span className="text-autovista-dark-gray">Carburant</span>
+                  <span className="text-gray-600">Carburant</span>
                   <span className="font-medium">{vehicle.fuelType}</span>
                 </div>
                 <div className="flex justify-between border-b pb-2">
-                  <span className="text-autovista-dark-gray">Transmission</span>
+                  <span className="text-gray-600">Transmission</span>
                   <span className="font-medium">{vehicle.transmission}</span>
                 </div>
                 <div className="flex justify-between border-b pb-2">
-                  <span className="text-autovista-dark-gray">Puissance</span>
+                  <span className="text-gray-600">Puissance</span>
                   <span className="font-medium">{vehicle.power}</span>
                 </div>
                 <div className="flex justify-between border-b pb-2">
-                  <span className="text-autovista-dark-gray">Couleur</span>
+                  <span className="text-gray-600">Couleur</span>
                   <span className="font-medium">{vehicle.color}</span>
                 </div>
                 <div className="flex justify-between border-b pb-2">
-                  <span className="text-autovista-dark-gray">Portes</span>
+                  <span className="text-gray-600">Portes</span>
                   <span className="font-medium">{vehicle.doors}</span>
                 </div>
                 <div className="flex justify-between border-b pb-2">
-                  <span className="text-autovista-dark-gray">Lieu</span>
+                  <span className="text-gray-600">Lieu</span>
                   <span className="font-medium">{vehicle.location}</span>
                 </div>
               </div>
@@ -213,7 +212,7 @@ const VehicleDetails = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6">
                 {vehicle.features.map((feature, index) => (
                   <div key={index} className="flex items-center">
-                    <svg className="h-4 w-4 text-autovista-teal mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-4 w-4 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span>{feature}</span>
@@ -227,20 +226,20 @@ const VehicleDetails = () => {
               <div className="bg-gray-50 rounded-lg p-6 mb-6">
                 <h2 className="text-xl font-semibold mb-4">Vendeur</h2>
                 <div className="flex items-center mb-4">
-                  <div className="bg-autovista-blue text-white h-12 w-12 rounded-full flex items-center justify-center text-xl font-bold mr-3">
+                  <div className="bg-blue-600 text-white h-12 w-12 rounded-full flex items-center justify-center text-xl font-bold mr-3">
                     {vehicle.sellerName.charAt(0)}
                   </div>
                   <div>
                     <p className="font-medium">{vehicle.sellerName}</p>
                     <div className="flex items-center">
-                      <Badge className={vehicle.sellerType === 'professional' ? 'bg-autovista-blue' : 'bg-autovista-dark-gray'}>
+                      <Badge className={vehicle.sellerType === 'professional' ? 'bg-blue-600' : 'bg-gray-600'}>
                         {vehicle.sellerType === 'professional' ? 'Professionnel' : 'Particulier'}
                       </Badge>
                       {vehicle.sellerType === 'professional' && (
                         <div className="ml-2 flex items-center">
                           <span className="text-yellow-500">★</span>
                           <span className="text-sm ml-1">{vehicle.sellerRating}</span>
-                          <span className="text-xs text-autovista-dark-gray ml-1">({vehicle.sellerReviews})</span>
+                          <span className="text-xs text-gray-600 ml-1">({vehicle.sellerReviews})</span>
                         </div>
                       )}
                     </div>
@@ -249,13 +248,13 @@ const VehicleDetails = () => {
                 
                 <Button 
                   onClick={handleContactSeller} 
-                  className="w-full bg-autovista-teal hover:bg-autovista-blue"
+                  className="w-full bg-blue-600 hover:bg-blue-700"
                 >
                   <MessageCircle className="h-4 w-4 mr-2" />
                   Contacter le vendeur
                 </Button>
                 
-                <p className="text-xs text-center mt-4 text-autovista-dark-gray">
+                <p className="text-xs text-center mt-4 text-gray-600">
                   Contactez le vendeur pour plus d'informations ou pour organiser une visite
                 </p>
               </div>

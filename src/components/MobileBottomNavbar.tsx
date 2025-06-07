@@ -24,7 +24,7 @@ const MobileBottomNavbar = () => {
     {
       icon: MessageCircle,
       label: 'Messages',
-      path: '/chat/1', // ou une page de messages générique
+      path: '/chat/1',
     },
     {
       icon: User,
@@ -46,8 +46,8 @@ const MobileBottomNavbar = () => {
               to={item.path}
               className={`flex flex-col items-center justify-center p-2 rounded-lg transition-colors ${
                 isActive 
-                  ? 'text-autovista-teal bg-autovista-teal/10' 
-                  : 'text-gray-500 hover:text-autovista-teal'
+                  ? 'text-blue-600 bg-blue-50' 
+                  : 'text-gray-500 hover:text-blue-600'
               }`}
             >
               <Icon className="h-5 w-5 mb-1" />
