@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import VehicleCard from '@/components/VehicleCard';
 import FeaturedVehiclesCarousel from '@/components/FeaturedVehicle';
 import SearchFilters from '@/components/SearchFilters';
+import MobileBottomNavbar from '@/components/MobileBottomNavbar';
 import { Link } from 'react-router-dom';
 import { Car, Users, MessageCircle } from 'lucide-react';
 
@@ -121,6 +122,30 @@ const recentVehicles = [
     location: 'Bordeaux',
     has360: true,
     sellerType: 'professional' as const
+  },
+  {
+    id: '7',
+    image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    title: 'Volkswagen Golf GTI',
+    price: 35900,
+    year: 2022,
+    mileage: 18000,
+    fuelType: 'Essence',
+    location: 'Strasbourg',
+    has360: true,
+    sellerType: 'individual' as const
+  },
+  {
+    id: '8',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    title: 'Porsche 911 Carrera',
+    price: 89900,
+    year: 2021,
+    mileage: 12000,
+    fuelType: 'Essence',
+    location: 'Nice',
+    has360: true,
+    sellerType: 'professional' as const
   }
 ];
 
@@ -134,7 +159,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-autovista-light-gray">
+    <div className="min-h-screen bg-autovista-light-gray pb-16 md:pb-0">
       <Navbar />
       
       {/* Hero Section with Carousel */}
@@ -246,6 +271,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      
+      <MobileBottomNavbar />
     </div>
   );
 };

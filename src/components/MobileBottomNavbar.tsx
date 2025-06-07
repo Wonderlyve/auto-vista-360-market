@@ -29,7 +29,7 @@ const MobileBottomNavbar = () => {
     {
       icon: User,
       label: 'Profil',
-      path: '/profile',
+      path: '/seller-dashboard',
     },
   ];
 

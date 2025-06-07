@@ -1,9 +1,11 @@
+
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import VehicleCard from '@/components/VehicleCard';
 import SearchFilters from '@/components/SearchFilters';
+import MobileBottomNavbar from '@/components/MobileBottomNavbar';
 
-// Mock data pour les véhicules
+// Mock data pour les véhicules avec plus d'options
 const mockVehicles = [
   {
     id: '1',
@@ -64,6 +66,90 @@ const mockVehicles = [
     location: 'Bordeaux',
     has360: true,
     sellerType: 'professional' as const
+  },
+  {
+    id: '6',
+    image: 'https://images.unsplash.com/photo-1554223090-7e482851df45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80',
+    title: 'Mercedes-Benz E 220d AMG Line',
+    price: 49990,
+    year: 2023,
+    mileage: 15000,
+    fuelType: 'Diesel',
+    location: 'Paris',
+    has360: true,
+    sellerType: 'professional' as const
+  },
+  {
+    id: '7',
+    image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    title: 'Volkswagen Golf GTI',
+    price: 35900,
+    year: 2022,
+    mileage: 18000,
+    fuelType: 'Essence',
+    location: 'Strasbourg',
+    has360: true,
+    sellerType: 'individual' as const
+  },
+  {
+    id: '8',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    title: 'Porsche 911 Carrera',
+    price: 89900,
+    year: 2021,
+    mileage: 12000,
+    fuelType: 'Essence',
+    location: 'Nice',
+    has360: true,
+    sellerType: 'professional' as const
+  },
+  {
+    id: '9',
+    image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    title: 'Range Rover Evoque',
+    price: 42500,
+    year: 2020,
+    mileage: 32000,
+    fuelType: 'Diesel',
+    location: 'Montpellier',
+    has360: false,
+    sellerType: 'individual' as const
+  },
+  {
+    id: '10',
+    image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    title: 'Ford Mustang GT',
+    price: 55900,
+    year: 2022,
+    mileage: 8000,
+    fuelType: 'Essence',
+    location: 'Nancy',
+    has360: true,
+    sellerType: 'professional' as const
+  },
+  {
+    id: '11',
+    image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    title: 'Jaguar F-Type',
+    price: 67500,
+    year: 2021,
+    mileage: 16000,
+    fuelType: 'Essence',
+    location: 'Cannes',
+    has360: true,
+    sellerType: 'individual' as const
+  },
+  {
+    id: '12',
+    image: 'https://images.unsplash.com/photo-1494976444042-6be4eb3a8c9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+    title: 'Citroën C3 Aircross',
+    price: 22900,
+    year: 2021,
+    mileage: 38000,
+    fuelType: 'Essence',
+    location: 'Rennes',
+    has360: false,
+    sellerType: 'professional' as const
   }
 ];
 
@@ -77,7 +163,7 @@ const Vehicules = () => {
   };
 
   return (
-    <div className="min-h-screen bg-autovista-light-gray">
+    <div className="min-h-screen bg-autovista-light-gray pb-16 md:pb-0">
       <Navbar />
       
       <div className="container mx-auto px-4 py-8">
@@ -101,6 +187,8 @@ const Vehicules = () => {
           </div>
         )}
       </div>
+      
+      <MobileBottomNavbar />
     </div>
   );
 };
