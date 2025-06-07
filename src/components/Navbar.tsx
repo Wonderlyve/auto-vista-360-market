@@ -32,7 +32,7 @@ const Navbar = () => {
             <Button variant="ghost" size="icon">
               <Search className="h-5 w-5" />
             </Button>
-            <Link to="/seller-dashboard">
+            <Link to="/dashboard">
               <Button variant="outline" className="flex items-center">
                 <User className="h-4 w-4 mr-2" />
                 Espace Vendeur
@@ -68,7 +68,7 @@ const Navbar = () => {
             <Link to="/vendre" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Vendre</Link>
             <Link to="/about" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">À Propos</Link>
             <div className="flex space-x-2">
-              <Link to="/seller-dashboard" className="flex-1">
+              <Link to="/dashboard" className="flex-1">
                 <Button variant="outline" className="w-full">Espace Vendeur</Button>
               </Link>
               <Link to="/login" className="flex-1">

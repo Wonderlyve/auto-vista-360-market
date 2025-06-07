@@ -82,12 +82,9 @@ const FeaturedVehicleSlide = ({
   );
 };
 
-const FeaturedVehicle = ({ vehicles }: FeaturedVehiclesCarouselProps) => {
+const FeaturedVehiclesCarousel = ({ vehicles }: FeaturedVehiclesCarouselProps) => {
   return (
     <div className="animate-fade-in">
-      <h2 className="text-3xl font-bold text-autovista-blue mb-8 text-center">
-        Véhicules à la une
-      </h2>
       <Carousel className="w-full">
         <CarouselContent>
           {vehicles.map((vehicle) => (
@@ -103,4 +100,4 @@ const FeaturedVehicle = ({ vehicles }: FeaturedVehiclesCarouselProps) => {
   );
 };
 
-export default FeaturedVehicle;
+export default FeaturedVehiclesCarousel;
