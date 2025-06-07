@@ -49,14 +49,9 @@ const PanoramaViewer = ({
 
       viewerRef.current = viewer;
 
-      // Gérer les événements du viewer
-      viewer.addEventListener('ready', () => {
+      // Gérer les événements du viewer avec la bonne API
+      viewer.once('ready', () => {
         console.log('Panorama viewer ready');
-      });
-
-      viewer.addEventListener('position-updated', (e) => {
-        // Optionnel: tracker la position de l'utilisateur
-        console.log('Position updated:', e);
       });
 
     } catch (error) {
@@ -74,24 +69,26 @@ const PanoramaViewer = ({
 
   return (
     <div className={`w-full ${className}`}>
-      {/* Instructions pour l'utilisateur */}
-      <div className="mb-2 text-sm text-gray-600 text-center">
-        🖱️ Cliquez et faites glisser pour explorer • 🔍 Molette pour zoomer • ↻ Rotation automatique disponible
+      {/* Instructions pour l'utilisateur - adaptées au mobile */}
+      <div className="mb-2 text-xs sm:text-sm text-gray-600 text-center px-2">
+        <span className="hidden sm:inline">🖱️ Cliquez et faites glisser pour explorer • 🔍 Molette pour zoomer • ↻ Rotation automatique disponible</span>
+        <span className="sm:hidden">👆 Glissez pour explorer • Pincez pour zoomer</span>
       </div>
       
-      {/* Conteneur du viewer */}
+      {/* Conteneur du viewer - hauteur adaptative */}
       <div 
         ref={containerRef}
-        className="w-full h-[500px] rounded-lg overflow-hidden shadow-lg border border-gray-200"
+        className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-lg border border-gray-200"
         style={{ 
           background: 'linear-gradient(45deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%)',
           backgroundSize: '20px 20px'
         }}
       />
       
-      {/* Message de chargement/erreur */}
-      <div className="mt-2 text-xs text-gray-500 text-center">
-        Vue panoramique 360° interactive
+      {/* Message de chargement/erreur - réduit sur mobile */}
+      <div className="mt-1 text-xs text-gray-500 text-center">
+        <span className="hidden sm:inline">Vue panoramique 360° interactive</span>
+        <span className="sm:hidden">Vue 360°</span>
       </div>
     </div>
   );
