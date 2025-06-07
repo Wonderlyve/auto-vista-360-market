@@ -68,28 +68,23 @@ const PanoramaViewer = ({
   }, [imageUrl]);
 
   return (
-    <div className={`w-full ${className}`}>
-      {/* Instructions pour l'utilisateur - adaptées au mobile */}
-      <div className="mb-2 text-xs sm:text-sm text-gray-600 text-center px-2">
-        <span className="hidden sm:inline">🖱️ Cliquez et faites glisser pour explorer • 🔍 Molette pour zoomer • ↻ Rotation automatique disponible</span>
-        <span className="sm:hidden">👆 Glissez pour explorer • Pincez pour zoomer</span>
+    <div className={`w-full h-full ${className}`}>
+      {/* Instructions simplifiées pour mobile */}
+      <div className="mb-1 text-xs text-gray-500 text-center px-2 sm:mb-2">
+        <span className="hidden sm:inline">🖱️ Cliquez et faites glisser • 🔍 Molette pour zoomer • ↻ Rotation auto</span>
+        <span className="sm:hidden">👆 Glissez • Pincez pour zoomer</span>
       </div>
       
-      {/* Conteneur du viewer - hauteur adaptative */}
+      {/* Conteneur du viewer - prend toute la hauteur disponible */}
       <div 
         ref={containerRef}
-        className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-lg border border-gray-200"
+        className="w-full h-full rounded-lg overflow-hidden shadow-lg border border-gray-200"
         style={{ 
           background: 'linear-gradient(45deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%)',
-          backgroundSize: '20px 20px'
+          backgroundSize: '20px 20px',
+          minHeight: '300px'
         }}
       />
-      
-      {/* Message de chargement/erreur - réduit sur mobile */}
-      <div className="mt-1 text-xs text-gray-500 text-center">
-        <span className="hidden sm:inline">Vue panoramique 360° interactive</span>
-        <span className="sm:hidden">Vue 360°</span>
-      </div>
     </div>
   );
 };

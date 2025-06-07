@@ -1,10 +1,10 @@
-
 import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import Navbar from '@/components/Navbar';
+import MobileBottomNavbar from '@/components/MobileBottomNavbar';
 import { MessageCircle, Car } from 'lucide-react';
 import VehicleViewer360 from '@/components/VehicleViewer360';
 
@@ -53,7 +53,8 @@ const VehicleDetails = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [vehicle, setVehicle] = useState(vehicleData);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState(searchParams.get('view') === '360' ? 'view360' : 'gallery');
+  // Mettre la vue 360° en premier par défaut
+  const [activeTab, setActiveTab] = useState(searchParams.get('view') === 'gallery' ? 'gallery' : 'view360');
   
   useEffect(() => {
     // Simulate API fetch
@@ -71,7 +72,7 @@ const VehicleDetails = () => {
   
   if (loading) {
     return (
-      <div className="min-h-screen bg-autovista-light-gray">
+      <div className="min-h-screen bg-autovista-light-gray pb-16 md:pb-0">
         <Navbar />
         <div className="container mx-auto px-4 py-8 flex justify-center items-center h-[60vh]">
           <div className="text-center">
@@ -84,16 +85,16 @@ const VehicleDetails = () => {
   }
   
   return (
-    <div className="min-h-screen bg-autovista-light-gray">
+    <div className="min-h-screen bg-autovista-light-gray pb-16 md:pb-0">
       <Navbar />
       <div className="container mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           {/* Header */}
-          <div className="p-6 border-b">
+          <div className="p-4 sm:p-6 border-b">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center">
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-autovista-blue">{vehicle.title}</h1>
-                <div className="flex items-center mt-2 text-autovista-dark-gray">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-autovista-blue">{vehicle.title}</h1>
+                <div className="flex items-center mt-2 text-sm sm:text-base text-autovista-dark-gray">
                   <span>Année {vehicle.year}</span>
                   <span className="mx-2">•</span>
                   <span>{vehicle.mileage.toLocaleString()} km</span>
@@ -102,16 +103,15 @@ const VehicleDetails = () => {
                 </div>
               </div>
               <div className="mt-4 md:mt-0">
-                <p className="text-3xl font-bold text-autovista-blue">{vehicle.price.toLocaleString()} €</p>
+                <p className="text-2xl sm:text-3xl font-bold text-autovista-blue">{vehicle.price.toLocaleString()} €</p>
               </div>
             </div>
           </div>
           
-          {/* Image Gallery / 360 View Tabs */}
+          {/* Image Gallery / 360 View Tabs - Vue 360° en premier */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <div className="p-4 bg-gray-50 border-b">
+            <div className="p-2 sm:p-4 bg-gray-50 border-b">
               <TabsList className="w-full max-w-md mx-auto grid grid-cols-2">
-                <TabsTrigger value="gallery" className="text-sm sm:text-base">Galerie Photos</TabsTrigger>
                 <TabsTrigger 
                   value="view360" 
                   className="text-sm sm:text-base"
@@ -119,12 +119,25 @@ const VehicleDetails = () => {
                 >
                   Vue 360°
                 </TabsTrigger>
+                <TabsTrigger value="gallery" className="text-sm sm:text-base">Galerie Photos</TabsTrigger>
               </TabsList>
             </div>
           
+            <TabsContent value="view360" className="m-0">
+              <div className="h-[50vh] sm:h-[60vh] md:h-[70vh] bg-gray-100">
+                {vehicle.has360 ? (
+                  <VehicleViewer360 vehicleId={vehicle.id} />
+                ) : (
+                  <div className="h-full flex items-center justify-center">
+                    <p>Vue 360° non disponible pour ce véhicule</p>
+                  </div>
+                )}
+              </div>
+            </TabsContent>
+
             <TabsContent value="gallery" className="m-0">
               {/* Main Image */}
-              <div className="relative h-[300px] sm:h-[400px] md:h-[500px]">
+              <div className="relative h-[50vh] sm:h-[60vh] md:h-[70vh]">
                 <img 
                   src={vehicle.images[activeImage]} 
                   alt={vehicle.title} 
@@ -151,22 +164,10 @@ const VehicleDetails = () => {
                 ))}
               </div>
             </TabsContent>
-            
-            <TabsContent value="view360" className="m-0">
-              <div className="h-[300px] sm:h-[400px] md:h-[500px] bg-gray-100">
-                {vehicle.has360 ? (
-                  <VehicleViewer360 vehicleId={vehicle.id} />
-                ) : (
-                  <div className="h-full flex items-center justify-center">
-                    <p>Vue 360° non disponible pour ce véhicule</p>
-                  </div>
-                )}
-              </div>
-            </TabsContent>
           </Tabs>
           
           {/* Details */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4 sm:p-6">
             {/* Left Column - Vehicle Details */}
             <div className="lg:col-span-2">
               <h2 className="text-xl font-semibold mb-4">Description</h2>
@@ -289,6 +290,7 @@ const VehicleDetails = () => {
           </div>
         </div>
       </div>
+      <MobileBottomNavbar />
     </div>
   );
 };

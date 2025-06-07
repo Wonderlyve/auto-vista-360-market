@@ -36,17 +36,17 @@ const VehicleViewer360 = ({ vehicleId }: VehicleViewer360Props) => {
           </div>
         </div>
       ) : (
-        <div className="h-full w-full">
-          {/* Instructions overlay - optimisé pour mobile */}
-          <div className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-black/60 px-2 py-1 sm:px-3 sm:py-2 rounded-lg text-white text-xs sm:text-sm z-10 transition-opacity duration-300 hover:opacity-70">
-            <p className="hidden sm:block">🌐 Vue panoramique interactive 360°</p>
-            <p className="sm:hidden">🌐 Vue 360°</p>
+        <div className="h-full w-full flex flex-col">
+          {/* Instructions overlay - très compacte sur mobile */}
+          <div className="absolute top-1 left-1 sm:top-2 sm:left-2 bg-black/60 px-1 py-0.5 sm:px-2 sm:py-1 rounded text-white text-xs z-10 transition-opacity duration-300 hover:opacity-70">
+            <p className="hidden sm:block">🌐 Vue panoramique 360°</p>
+            <p className="sm:hidden">🌐 360°</p>
           </div>
           
-          {/* PanoramaViewer Component */}
+          {/* PanoramaViewer Component - prend toute la hauteur */}
           <PanoramaViewer 
             imageUrl={sphericalImageUrl}
-            className="h-full"
+            className="flex-1"
           />
         </div>
       )}
