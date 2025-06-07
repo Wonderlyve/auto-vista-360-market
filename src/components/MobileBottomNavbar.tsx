@@ -28,8 +28,8 @@ const MobileBottomNavbar = () => {
     },
     {
       icon: User,
-      label: 'Profil',
-      path: '/profile',
+      label: 'Vendeur',
+      path: '/seller-dashboard',
     },
   ];
 
