@@ -56,8 +56,58 @@ const mockVehicles = [
     location: 'Lille',
     has360: false,
     sellerType: 'individual' as const
+  },
+  {
+    id: '5',
+    image: 'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
+    title: 'Mercedes Classe C',
+    price: 52000,
+    year: 2023,
+    mileage: 15000,
+    fuelType: 'Hybride',
+    location: 'Nice',
+    has360: true,
+    sellerType: 'professional' as const
+  },
+  {
+    id: '6',
+    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
+    title: 'Honda Civic',
+    price: 28500,
+    year: 2022,
+    mileage: 22000,
+    fuelType: 'Essence',
+    location: 'Bordeaux',
+    has360: false,
+    sellerType: 'individual' as const
+  },
+  {
+    id: '7',
+    image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
+    title: 'Peugeot 308',
+    price: 24900,
+    year: 2021,
+    mileage: 38000,
+    fuelType: 'Diesel',
+    location: 'Strasbourg',
+    has360: true,
+    sellerType: 'professional' as const
+  },
+  {
+    id: '8',
+    image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
+    title: 'Volkswagen Golf',
+    price: 27800,
+    year: 2020,
+    mileage: 45000,
+    fuelType: 'Essence',
+    location: 'Nantes',
+    has360: false,
+    sellerType: 'individual' as const
   }
 ];
+
+const featuredVehicles = mockVehicles.slice(0, 3);
 
 const Index = () => {
   const handleSearch = (filters: any) => {
@@ -99,7 +149,7 @@ const Index = () => {
       {/* Featured Vehicle */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <FeaturedVehicle />
+          <FeaturedVehicle vehicles={featuredVehicles} />
         </div>
       </section>
 
