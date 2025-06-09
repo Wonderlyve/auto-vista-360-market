@@ -1,6 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Viewer } from 'photo-sphere-viewer';
+import { Maximize } from 'lucide-react';
 
 interface PanoramaViewerProps {
   imageUrl?: string;
@@ -8,7 +9,7 @@ interface PanoramaViewerProps {
 }
 
 const PanoramaViewer = ({ 
-  imageUrl = '/lovable-uploads/95c880d0-3c75-445f-bc7d-1a697ad98dc1.png',
+  imageUrl = '/lovable-uploads/0e33164b-9b6f-4d61-aad1-660c30ff1c0b.png',
   className = ''
 }: PanoramaViewerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -59,13 +60,28 @@ const PanoramaViewer = ({
     };
   }, [imageUrl]);
 
+  const handleFullscreen = () => {
+    if (viewerRef.current) {
+      viewerRef.current.enterFullscreen();
+    }
+  };
+
   return (
-    <div className={`w-full h-full ${className}`}>
+    <div className={`w-full h-full relative ${className}`}>
       {/* Instructions très compactes pour mobile */}
       <div className="mb-1 text-xs text-gray-500 text-center px-2 sm:mb-2">
         <span className="hidden sm:inline">🖱️ Cliquez et faites glisser • 🔍 Molette pour zoomer • ↻ Rotation auto</span>
         <span className="sm:hidden">👆 Glissez • Pincez pour zoomer</span>
       </div>
+      
+      {/* Icône plein écran */}
+      <button
+        onClick={handleFullscreen}
+        className="absolute top-2 right-2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg transition-colors"
+        title="Mode plein écran"
+      >
+        <Maximize className="h-4 w-4" />
+      </button>
       
       <div 
         ref={containerRef}

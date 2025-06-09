@@ -10,7 +10,7 @@ interface VehicleViewer360Props {
 const VehicleViewer360 = ({ vehicleId }: VehicleViewer360Props) => {
   const [loading, setLoading] = useState(true);
   
-  const sphericalImageUrl = '/lovable-uploads/95c880d0-3c75-445f-bc7d-1a697ad98dc1.png';
+  const sphericalImageUrl = '/lovable-uploads/0e33164b-9b6f-4d61-aad1-660c30ff1c0b.png';
 
   useEffect(() => {
     const timer = setTimeout(() => {
