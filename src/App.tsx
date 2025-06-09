@@ -13,6 +13,7 @@ import SellerDashboard from "./pages/SellerDashboard";
 import Chat from "./pages/Chat";
 import Vendre from "./pages/Vendre";
 import Vehicules from "./pages/Vehicules";
+import Properties from "./pages/Properties";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import ViewAll from "./pages/ViewAll";
@@ -36,6 +37,11 @@ const App = () => (
           <Route path="/vehicules" element={
             <Suspense fallback={<div>Loading...</div>}>
               <Vehicules />
+            </Suspense>
+          } />
+          <Route path="/properties" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Properties />
             </Suspense>
           } />
           <Route path="/vehicle/:id" element={
