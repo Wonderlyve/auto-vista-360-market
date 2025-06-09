@@ -10,7 +10,7 @@ interface VehicleViewer360Props {
 const VehicleViewer360 = ({ vehicleId }: VehicleViewer360Props) => {
   const [loading, setLoading] = useState(true);
   
-  const sphericalImageUrl = '/lovable-uploads/da9d4f9b-03d2-42e8-98a1-e1496d9ab7c3.png';
+  const sphericalImageUrl = '/lovable-uploads/0e33164b-9b6f-4d61-aad1-660c30ff1c0b.png';
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,7 +21,7 @@ const VehicleViewer360 = ({ vehicleId }: VehicleViewer360Props) => {
   }, [vehicleId]);
 
   return (
-    <div className="w-full h-[400px] sm:h-[500px] relative overflow-hidden bg-gray-900 rounded-lg">
+    <div className="w-full h-full relative overflow-hidden bg-gray-900 rounded-lg">
       {loading ? (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
           <div className="text-center">
@@ -43,7 +43,7 @@ const VehicleViewer360 = ({ vehicleId }: VehicleViewer360Props) => {
           
           <PanoramaViewer 
             imageUrl={sphericalImageUrl}
-            className="flex-1 h-full"
+            className="flex-1"
           />
         </div>
       )}
