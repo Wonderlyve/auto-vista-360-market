@@ -9,24 +9,19 @@ interface PanoramaViewerProps {
 }
 
 const PanoramaViewer = ({ 
-  imageUrl = '/lovable-uploads/0e33164b-9b6f-4d61-aad1-660c30ff1c0b.png',
+  imageUrl = '/lovable-uploads/da9d4f9b-03d2-42e8-98a1-e1496d9ab7c3.png',
   className = ''
 }: PanoramaViewerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const fullscreenContainerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<Viewer | null>(null);
+  const fullscreenViewerRef = useRef<Viewer | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    if (viewerRef.current) {
-      viewerRef.current.destroy();
-      viewerRef.current = null;
-    }
-
+  const createViewer = (container: HTMLDivElement, isFullscreenMode = false) => {
     try {
       const viewer = new Viewer({
-        container: containerRef.current,
+        container: container,
         panorama: imageUrl,
         defaultZoomLvl: 0,
         minFov: 30,
@@ -42,15 +37,26 @@ const PanoramaViewer = ({
         zoomSpeed: 1.0,
       });
 
-      viewerRef.current = viewer;
-
       viewer.once('ready', () => {
-        console.log('Panorama viewer ready');
+        console.log(`Panorama viewer ready (${isFullscreenMode ? 'fullscreen' : 'normal'} mode)`);
       });
 
+      return viewer;
     } catch (error) {
       console.error('Erreur lors de l\'initialisation du viewer panoramique:', error);
+      return null;
     }
+  };
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    if (viewerRef.current) {
+      viewerRef.current.destroy();
+      viewerRef.current = null;
+    }
+
+    viewerRef.current = createViewer(containerRef.current);
 
     return () => {
       if (viewerRef.current) {
@@ -59,6 +65,27 @@ const PanoramaViewer = ({
       }
     };
   }, [imageUrl]);
+
+  useEffect(() => {
+    if (isFullscreen && fullscreenContainerRef.current && !fullscreenViewerRef.current) {
+      fullscreenViewerRef.current = createViewer(fullscreenContainerRef.current, true);
+    }
+
+    if (!isFullscreen && fullscreenViewerRef.current) {
+      fullscreenViewerRef.current.destroy();
+      fullscreenViewerRef.current = null;
+    }
+
+    // Handle escape key
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isFullscreen) {
+        setIsFullscreen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isFullscreen, imageUrl]);
 
   const handleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
@@ -88,12 +115,12 @@ const PanoramaViewer = ({
           style={{ 
             background: 'linear-gradient(45deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%)',
             backgroundSize: '20px 20px',
-            minHeight: '300px'
+            minHeight: '350px'
           }}
         />
       </div>
 
-      {/* Mode plein écran personnalisé */}
+      {/* Mode plein écran immersif avec viewer 360° */}
       {isFullscreen && (
         <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
           {/* Bouton de fermeture */}
@@ -105,22 +132,23 @@ const PanoramaViewer = ({
             <Minimize className="h-6 w-6" />
           </button>
           
-          {/* Image en plein écran avec ratios adaptatifs */}
-          <div className="w-full h-full flex items-center justify-center p-4">
-            <img
-              src={imageUrl}
-              alt="Vue panoramique 360°"
-              className="max-w-full max-h-full object-contain rounded-lg"
-              style={{
-                aspectRatio: window.innerWidth < 768 ? '9/16' : '16/9'
-              }}
+          {/* Container pour le viewer 360° en plein écran */}
+          <div 
+            className="w-full h-full"
+            style={{
+              aspectRatio: window.innerWidth < 768 ? '9/16' : '16/9'
+            }}
+          >
+            <div 
+              ref={fullscreenContainerRef}
+              className="w-full h-full"
             />
           </div>
           
           {/* Instructions en mode plein écran */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-lg text-sm">
-            <span className="hidden sm:inline">Appuyez sur Échap ou cliquez sur l'icône pour quitter</span>
-            <span className="sm:hidden">Touchez l'icône pour quitter</span>
+            <span className="hidden sm:inline">🖱️ Naviguez • 🔍 Zoom • Échap pour quitter</span>
+            <span className="sm:hidden">👆 Naviguez • Touchez l'icône pour quitter</span>
           </div>
         </div>
       )}
