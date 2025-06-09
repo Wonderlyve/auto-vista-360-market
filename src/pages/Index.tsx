@@ -159,28 +159,28 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-autovista-light-gray pb-16 md:pb-0">
+    <div className="min-h-screen bg-autovista-light-gray pb-16 md:pb-0 overflow-x-hidden">
       <Navbar />
       
       {/* Hero Section with Carousel */}
-      <section className="container mx-auto px-4 py-8">
+      <section className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
         <FeaturedVehiclesCarousel vehicles={featuredVehicles} />
       </section>
       
       {/* Search Section */}
-      <section className="container mx-auto px-4 py-6">
+      <section className="container mx-auto px-2 sm:px-4 py-3 sm:py-6">
         <SearchFilters onSearch={handleSearch} />
       </section>
       
       {/* Recent Vehicles */}
-      <section className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-autovista-blue">Véhicules récents</h2>
-          <Button asChild variant="outline">
+      <section className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
+        <div className="flex justify-between items-center mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-autovista-blue">Véhicules récents</h2>
+          <Button asChild variant="outline" size="sm" className="text-xs sm:text-sm">
             <Link to="/view-all">Voir tous</Link>
           </Button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {recentVehicles.map(vehicle => (
             <VehicleCard key={vehicle.id} {...vehicle} />
           ))}
@@ -188,10 +188,10 @@ const Index = () => {
       </section>
       
       {/* Features Section */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-autovista-blue">Découvrez AutoVista 360°</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="bg-white py-8 sm:py-16">
+        <div className="container mx-auto px-2 sm:px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-autovista-blue">Découvrez AutoVista 360°</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
             <div className="text-center p-6 rounded-lg border border-gray-100 shadow-sm bg-white">
               <div className="mx-auto bg-autovista-teal/10 w-16 h-16 rounded-full flex items-center justify-center mb-4">
                 <Car className="h-8 w-8 text-autovista-teal" />
@@ -218,11 +218,11 @@ const Index = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="bg-autovista-blue text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Vous avez un véhicule à vendre?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Rejoignez notre marketplace et bénéficiez de notre technologie 360° pour mettre en valeur votre véhicule.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <section className="bg-autovista-blue text-white py-8 sm:py-16">
+        <div className="container mx-auto px-2 sm:px-4 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Vous avez un véhicule à vendre?</h2>
+          <p className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">Rejoignez notre marketplace et bénéficiez de notre technologie 360° pour mettre en valeur votre véhicule.</p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Button asChild size="lg" className="bg-white text-autovista-blue hover:bg-gray-100">
               <Link to="/sell">Publier une annonce</Link>
             </Button>
@@ -234,9 +234,9 @@ const Index = () => {
       </section>
       
       {/* Footer */}
-      <footer className="bg-gray-800 text-gray-300 py-10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <footer className="bg-gray-800 text-gray-300 py-6 sm:py-10">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             <div>
               <h3 className="text-white font-bold mb-4">AutoVista 360°</h3>
               <p className="text-sm">La première plateforme de vente de véhicules avec visite virtuelle 360°.</p>
@@ -266,7 +266,7 @@ const Index = () => {
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-sm text-center">
+          <div className="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-sm text-center">
             <p>&copy; {new Date().getFullYear()} AutoVista 360°. Tous droits réservés.</p>
           </div>
         </div>
