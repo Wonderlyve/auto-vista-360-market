@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Viewer } from 'photo-sphere-viewer';
 import { Maximize, Minimize } from 'lucide-react';
@@ -6,15 +5,23 @@ import { Maximize, Minimize } from 'lucide-react';
 interface PanoramaViewerProps {
   imageUrl?: string;
   className?: string;
+  autoFullscreen?: boolean;
 }
 
 const PanoramaViewer = ({ 
   imageUrl = '/lovable-uploads/0e33164b-9b6f-4d61-aad1-660c30ff1c0b.png',
-  className = ''
+  className = '',
+  autoFullscreen = false
 }: PanoramaViewerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<Viewer | null>(null);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(autoFullscreen);
+
+  useEffect(() => {
+    if (autoFullscreen) {
+      setIsFullscreen(true);
+    }
+  }, [autoFullscreen]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -64,6 +71,10 @@ const PanoramaViewer = ({
     setIsFullscreen(!isFullscreen);
   };
 
+  const handleCloseFullscreen = () => {
+    setIsFullscreen(false);
+  };
+
   return (
     <>
       <div className={`w-full h-full relative ${className}`}>
@@ -92,12 +103,12 @@ const PanoramaViewer = ({
         />
       </div>
 
-      {/* Mode plein écran personnalisé */}
+      {/* Mode plein écran automatique */}
       {isFullscreen && (
         <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
           {/* Bouton de fermeture */}
           <button
-            onClick={handleFullscreen}
+            onClick={handleCloseFullscreen}
             className="absolute top-4 right-4 z-60 bg-white/20 hover:bg-white/30 text-white p-3 rounded-lg transition-colors"
             title="Fermer le mode plein écran"
           >

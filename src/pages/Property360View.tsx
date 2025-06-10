@@ -25,7 +25,7 @@ const Property360View = () => {
         </Button>
       </div>
       
-      {/* Viewer container with responsive aspect ratios */}
+      {/* Viewer container with responsive aspect ratios and auto fullscreen */}
       <div className="w-full h-full flex items-center justify-center">
         {/* Mobile: 9:16 aspect ratio */}
         <div className="block sm:hidden w-full h-full">
@@ -36,7 +36,7 @@ const Property360View = () => {
               aspectRatio: '9/16'
             }}
           >
-            <VehicleViewer360 vehicleId={id!} type="property" />
+            <VehicleViewer360 vehicleId={id!} type="property" autoFullscreen={true} />
           </div>
         </div>
         
@@ -49,7 +49,7 @@ const Property360View = () => {
               aspectRatio: '16/9'
             }}
           >
-            <VehicleViewer360 vehicleId={id!} type="property" />
+            <VehicleViewer360 vehicleId={id!} type="property" autoFullscreen={true} />
           </div>
         </div>
       </div>

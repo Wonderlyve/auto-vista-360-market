@@ -6,9 +6,10 @@ import PanoramaViewer from './PanoramaViewer';
 interface VehicleViewer360Props {
   vehicleId: string;
   type?: 'vehicle' | 'property';
+  autoFullscreen?: boolean;
 }
 
-const VehicleViewer360 = ({ vehicleId, type = 'vehicle' }: VehicleViewer360Props) => {
+const VehicleViewer360 = ({ vehicleId, type = 'vehicle', autoFullscreen = false }: VehicleViewer360Props) => {
   const [loading, setLoading] = useState(true);
   
   // Choisir l'image selon le type
@@ -55,6 +56,7 @@ const VehicleViewer360 = ({ vehicleId, type = 'vehicle' }: VehicleViewer360Props
           <PanoramaViewer 
             imageUrl={sphericalImageUrl}
             className="flex-1 w-full h-full"
+            autoFullscreen={autoFullscreen}
           />
         </div>
       )}
