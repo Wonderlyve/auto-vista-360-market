@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { MapPin, Home, Bed, Bath, Square } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface PropertyCardProps {
   property: {
@@ -86,12 +87,16 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
       </CardContent>
       
       <CardFooter className="p-4 pt-0 flex gap-2">
-        <Button variant="outline" size="sm" className="flex-1">
-          <Home className="h-4 w-4 mr-1" />
-          Visite 360°
+        <Button asChild variant="outline" size="sm" className="flex-1">
+          <Link to={`/property/${property.id}/360`}>
+            <Home className="h-4 w-4 mr-1" />
+            Visite 360°
+          </Link>
         </Button>
-        <Button size="sm" className="flex-1">
-          Détails
+        <Button asChild size="sm" className="flex-1">
+          <Link to={`/property/${property.id}`}>
+            Détails
+          </Link>
         </Button>
       </CardFooter>
     </Card>

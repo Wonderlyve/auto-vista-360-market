@@ -14,6 +14,8 @@ import Chat from "./pages/Chat";
 import Vendre from "./pages/Vendre";
 import Vehicules from "./pages/Vehicules";
 import Properties from "./pages/Properties";
+import PropertyDetails from "./pages/PropertyDetails";
+import Property360View from "./pages/Property360View";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import ViewAll from "./pages/ViewAll";
@@ -42,6 +44,16 @@ const App = () => (
           <Route path="/properties" element={
             <Suspense fallback={<div>Loading...</div>}>
               <Properties />
+            </Suspense>
+          } />
+          <Route path="/property/:id" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <PropertyDetails />
+            </Suspense>
+          } />
+          <Route path="/property/:id/360" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Property360View />
             </Suspense>
           } />
           <Route path="/vehicle/:id" element={
