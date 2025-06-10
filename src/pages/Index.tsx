@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
@@ -227,18 +228,33 @@ const Index = () => {
           ))}
         </div>
       </section>
+
+      {/* Featured Properties Section */}
+      <section className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
+        <div className="flex justify-between items-center mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-autovista-blue">Propriétés en vedette</h2>
+          <Button asChild variant="outline" size="sm" className="text-xs sm:text-sm">
+            <Link to="/properties">Voir toutes</Link>
+          </Button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+          {featuredProperties.map(property => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
+        </div>
+      </section>
       
       {/* Features Section */}
       <section className="bg-white py-8 sm:py-16">
         <div className="container mx-auto px-2 sm:px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-autovista-blue">Découvrez AutoVista 360°</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-autovista-blue">Découvrez Vista360</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
             <div className="text-center p-6 rounded-lg border border-gray-100 shadow-sm bg-white">
               <div className="mx-auto bg-autovista-teal/10 w-16 h-16 rounded-full flex items-center justify-center mb-4">
                 <Car className="h-8 w-8 text-autovista-teal" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Visite Virtuelle 360°</h3>
-              <p className="text-autovista-dark-gray">Découvrez chaque véhicule en détail avec notre technologie de visite virtuelle 360°. Examinez l'intérieur comme l'extérieur.</p>
+              <p className="text-autovista-dark-gray">Découvrez chaque véhicule et propriété en détail avec notre technologie de visite virtuelle 360°. Examinez l'intérieur comme l'extérieur.</p>
             </div>
             <div className="text-center p-6 rounded-lg border border-gray-100 shadow-sm bg-white">
               <div className="mx-auto bg-autovista-blue/10 w-16 h-16 rounded-full flex items-center justify-center mb-4">
@@ -261,11 +277,11 @@ const Index = () => {
       {/* CTA Section */}
       <section className="bg-autovista-blue text-white py-8 sm:py-16">
         <div className="container mx-auto px-2 sm:px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Vous avez un véhicule à vendre?</h2>
-          <p className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">Rejoignez notre marketplace et bénéficiez de notre technologie 360° pour mettre en valeur votre véhicule.</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Vous avez un véhicule ou bien immobilier à vendre?</h2>
+          <p className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">Rejoignez notre marketplace et bénéficiez de notre technologie 360° pour mettre en valeur vos biens.</p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Button asChild size="lg" className="bg-white text-autovista-blue hover:bg-gray-100">
-              <Link to="/sell">Publier une annonce</Link>
+              <Link to="/vendre">Publier une annonce</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/20">
               <Link to="/about">En savoir plus</Link>
@@ -279,15 +295,16 @@ const Index = () => {
         <div className="container mx-auto px-2 sm:px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             <div>
-              <h3 className="text-white font-bold mb-4">AutoVista 360°</h3>
-              <p className="text-sm">La première plateforme de vente de véhicules avec visite virtuelle 360°.</p>
+              <h3 className="text-white font-bold mb-4">Vista360</h3>
+              <p className="text-sm">La première plateforme de vente de véhicules et immobilier avec visite virtuelle 360°.</p>
             </div>
             <div>
               <h4 className="text-white font-semibold mb-4">Liens rapides</h4>
               <ul className="space-y-2 text-sm">
                 <li><Link to="/" className="hover:text-white">Accueil</Link></li>
-                <li><Link to="/vehicles" className="hover:text-white">Véhicules</Link></li>
-                <li><Link to="/sell" className="hover:text-white">Vendre</Link></li>
+                <li><Link to="/vehicules" className="hover:text-white">Véhicules</Link></li>
+                <li><Link to="/properties" className="hover:text-white">Immobilier</Link></li>
+                <li><Link to="/vendre" className="hover:text-white">Vendre</Link></li>
                 <li><Link to="/about" className="hover:text-white">À Propos</Link></li>
               </ul>
             </div>
@@ -308,7 +325,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-sm text-center">
-            <p>&copy; {new Date().getFullYear()} AutoVista 360°. Tous droits réservés.</p>
+            <p>&copy; {new Date().getFullYear()} Vista360. Tous droits réservés.</p>
           </div>
         </div>
       </footer>
@@ -319,5 +336,3 @@ const Index = () => {
 };
 
 export default Index;
-
-</initial_code>
