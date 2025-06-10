@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -13,7 +14,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <Car className="h-6 w-6 sm:h-8 sm:w-8 text-autovista-teal" />
-            <span className="text-lg sm:text-2xl font-bold text-autovista-blue">AutoVista</span>
+            <span className="text-lg sm:text-2xl font-bold text-autovista-blue">Vista360</span>
             <span className="hidden sm:inline-block text-sm bg-autovista-teal text-white px-2 py-1 rounded">360°</span>
           </Link>
           
@@ -21,6 +22,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Accueil</Link>
             <Link to="/vehicules" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Véhicules</Link>
+            <Link to="/properties" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Immobilier</Link>
             <Link to="/view-all" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Voir tout</Link>
             <Link to="/vendre" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">Vendre</Link>
             <Link to="/about" className="text-autovista-dark-gray hover:text-autovista-teal transition-colors">À Propos</Link>
@@ -63,6 +65,7 @@ const Navbar = () => {
           <div className="md:hidden py-3 space-y-3 animate-fade-in border-t border-gray-100 mt-3">
             <Link to="/" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Accueil</Link>
             <Link to="/vehicules" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Véhicules</Link>
+            <Link to="/properties" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Immobilier</Link>
             <Link to="/view-all" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Voir tout</Link>
             <Link to="/vendre" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">Vendre</Link>
             <Link to="/about" className="block py-2 text-autovista-dark-gray hover:text-autovista-teal">À Propos</Link>

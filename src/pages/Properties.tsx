@@ -13,42 +13,48 @@ const Properties = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilters, setShowFilters] = useState(false);
 
-  // Données d'exemple pour les propriétés
+  // Fonction de recherche pour les filtres
+  const handleSearch = (filters: any) => {
+    console.log('Filtres appliqués:', filters);
+    // Ici vous pourrez ajouter la logique de filtrage
+  };
+
+  // Données d'exemple pour les propriétés avec des images immobilières réelles
   const properties = [
     {
       id: '1',
       title: 'Villa moderne avec piscine',
-      price: '$450,000',
+      price: '450,000 $',
       location: 'Kinshasa, Gombe',
       type: 'Villa',
       bedrooms: 4,
       bathrooms: 3,
       surface: 300,
-      image: '/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=800&h=600&fit=crop',
       features: ['Piscine', 'Garage', 'Jardin', 'Climatisation']
     },
     {
       id: '2',
       title: 'Appartement standing centre-ville',
-      price: '$180,000',
+      price: '180,000 $',
       location: 'Kinshasa, Lingwala',
       type: 'Appartement',
       bedrooms: 3,
       bathrooms: 2,
       surface: 120,
-      image: '/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=800&h=600&fit=crop',
       features: ['Balcon', 'Ascenseur', 'Parking']
     },
     {
       id: '3',
       title: 'Maison familiale avec grand terrain',
-      price: '$220,000',
+      price: '220,000 $',
       location: 'Kinshasa, Lemba',
       type: 'Maison',
       bedrooms: 5,
       bathrooms: 3,
       surface: 250,
-      image: '/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
       features: ['Grand terrain', 'Véranda', 'Cuisine équipée']
     }
   ];
@@ -101,7 +107,7 @@ const Properties = () => {
         {/* Filtres */}
         {showFilters && (
           <div className="mb-6">
-            <SearchFilters />
+            <SearchFilters onSearch={handleSearch} />
           </div>
         )}
 
