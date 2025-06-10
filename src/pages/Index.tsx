@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import VehicleCard from '@/components/VehicleCard';
+import PropertyCard from '@/components/PropertyCard';
 import FeaturedVehiclesCarousel from '@/components/FeaturedVehicle';
 import SearchFilters from '@/components/SearchFilters';
 import MobileBottomNavbar from '@/components/MobileBottomNavbar';
@@ -59,6 +60,46 @@ const featuredVehicles = [
     mileage: 48000,
     location: 'Bordeaux',
     has360: true
+  }
+];
+
+// Données d'exemple pour les propriétés
+const featuredProperties = [
+  {
+    id: '1',
+    title: 'Villa moderne avec piscine',
+    price: '450,000 $',
+    location: 'Kinshasa, Gombe',
+    type: 'Villa',
+    bedrooms: 4,
+    bathrooms: 3,
+    surface: 300,
+    image: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=800&h=600&fit=crop',
+    features: ['Piscine', 'Garage', 'Jardin', 'Climatisation']
+  },
+  {
+    id: '2',
+    title: 'Appartement standing centre-ville',
+    price: '180,000 $',
+    location: 'Kinshasa, Lingwala',
+    type: 'Appartement',
+    bedrooms: 3,
+    bathrooms: 2,
+    surface: 120,
+    image: 'https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=800&h=600&fit=crop',
+    features: ['Balcon', 'Ascenseur', 'Parking']
+  },
+  {
+    id: '3',
+    title: 'Maison familiale avec grand terrain',
+    price: '220,000 $',
+    location: 'Kinshasa, Lemba',
+    type: 'Maison',
+    bedrooms: 5,
+    bathrooms: 3,
+    surface: 250,
+    image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop',
+    features: ['Grand terrain', 'Véranda', 'Cuisine équipée']
   }
 ];
 
@@ -278,3 +319,5 @@ const Index = () => {
 };
 
 export default Index;
+
+</initial_code>

@@ -13,7 +13,7 @@ const VehicleViewer360 = ({ vehicleId, type = 'vehicle' }: VehicleViewer360Props
   
   // Choisir l'image selon le type
   const sphericalImageUrl = type === 'property' 
-    ? '/lovable-uploads/b512f145-1e54-45fd-9ac0-452b16369077.png'
+    ? '/lovable-uploads/be15f346-d46a-4baf-8328-2f5f0a90d8b8.png'
     : '/lovable-uploads/0e33164b-9b6f-4d61-aad1-660c30ff1c0b.png';
 
   const Icon = type === 'property' ? Home : Car;
