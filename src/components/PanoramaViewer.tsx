@@ -36,8 +36,8 @@ const PanoramaViewer = ({
           'autorotate',
           'zoom',
         ],
-        autorotateDelay: 2000,
-        autorotateSpeed: '1rpm',
+        autorotateDelay: 3000,
+        autorotateSpeed: '0.5rpm',
         moveSpeed: 1.0,
         zoomSpeed: 1.0,
       });
@@ -67,28 +67,27 @@ const PanoramaViewer = ({
   return (
     <>
       <div className={`w-full h-full relative ${className}`}>
-        {/* Instructions très compactes pour mobile */}
-        <div className="mb-1 text-xs text-gray-500 text-center px-2 sm:mb-2">
-          <span className="hidden sm:inline">🖱️ Cliquez et faites glisser • 🔍 Molette pour zoomer • ↻ Rotation auto</span>
-          <span className="sm:hidden">👆 Glissez • Pincez pour zoomer</span>
+        {/* Instructions très compactes */}
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 px-2 py-1 rounded text-white text-xs z-10 pointer-events-none">
+          <span className="hidden sm:inline">🖱️ Glissez • 🔍 Molette • ↻ Auto</span>
+          <span className="sm:hidden">👆 Glissez • Pincez</span>
         </div>
         
         {/* Icône plein écran */}
         <button
           onClick={handleFullscreen}
-          className="absolute top-2 right-2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 rounded-lg transition-colors"
+          className="absolute top-2 right-2 z-20 bg-black/50 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-lg transition-colors"
           title={isFullscreen ? "Mode normal" : "Mode plein écran"}
         >
-          <Maximize className="h-4 w-4" />
+          <Maximize className="h-3 w-3 sm:h-4 sm:w-4" />
         </button>
         
         <div 
           ref={containerRef}
-          className="w-full h-full rounded-lg overflow-hidden shadow-lg border border-gray-200"
+          className="w-full h-full overflow-hidden"
           style={{ 
-            background: 'linear-gradient(45deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%)',
-            backgroundSize: '20px 20px',
-            minHeight: '300px'
+            background: 'linear-gradient(45deg, #1f2937 25%, #374151 25%, #374151 50%, #1f2937 50%, #1f2937 75%, #374151 75%)',
+            backgroundSize: '20px 20px'
           }}
         />
       </div>
@@ -105,16 +104,20 @@ const PanoramaViewer = ({
             <Minimize className="h-6 w-6" />
           </button>
           
-          {/* Image en plein écran avec ratios adaptatifs */}
-          <div className="w-full h-full flex items-center justify-center p-4">
-            <img
-              src={imageUrl}
-              alt="Vue panoramique 360°"
-              className="max-w-full max-h-full object-contain rounded-lg"
+          {/* Container plein écran adaptatif */}
+          <div className="w-full h-full flex items-center justify-center p-0">
+            <div 
+              className="w-full h-full"
               style={{
                 aspectRatio: window.innerWidth < 768 ? '9/16' : '16/9'
               }}
-            />
+            >
+              <img
+                src={imageUrl}
+                alt="Vue panoramique 360°"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
           
           {/* Instructions en mode plein écran */}

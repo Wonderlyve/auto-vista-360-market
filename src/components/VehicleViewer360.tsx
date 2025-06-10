@@ -30,22 +30,22 @@ const VehicleViewer360 = ({ vehicleId, type = 'vehicle' }: VehicleViewer360Props
   }, [vehicleId]);
 
   return (
-    <div className="w-full h-full relative overflow-hidden bg-gray-900 rounded-lg">
+    <div className="w-full h-full relative overflow-hidden bg-gray-900">
       {loading ? (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
           <div className="text-center">
-            <div className="mx-auto bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-              <Icon className="h-8 w-8 text-blue-600 animate-pulse" />
+            <div className="mx-auto bg-blue-100 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4">
+              <Icon className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 animate-pulse" />
             </div>
-            <p className="text-sm text-white">
+            <p className="text-xs sm:text-sm text-white px-4">
               {loadingText}
             </p>
           </div>
         </div>
       ) : (
         <div className="h-full w-full flex flex-col">
-          {/* Instructions compactes pour mobile */}
-          <div className="absolute top-1 left-1 sm:top-2 sm:left-2 bg-black/60 px-1 py-0.5 sm:px-2 sm:py-1 rounded text-white text-xs z-10 transition-opacity duration-300 hover:opacity-70">
+          {/* Instructions très compactes */}
+          <div className="absolute top-1 left-1 sm:top-2 sm:left-2 bg-black/60 px-2 py-1 rounded text-white text-xs z-10 transition-opacity duration-300 hover:opacity-70">
             <p className="hidden sm:block">
               🌐 {type === 'property' ? 'Visite virtuelle 360°' : 'Vue panoramique 360°'}
             </p>
@@ -54,7 +54,7 @@ const VehicleViewer360 = ({ vehicleId, type = 'vehicle' }: VehicleViewer360Props
           
           <PanoramaViewer 
             imageUrl={sphericalImageUrl}
-            className="flex-1"
+            className="flex-1 w-full h-full"
           />
         </div>
       )}
