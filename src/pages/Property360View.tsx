@@ -25,33 +25,9 @@ const Property360View = () => {
         </Button>
       </div>
       
-      {/* Viewer container with responsive aspect ratios */}
-      <div className="w-full h-full flex items-center justify-center">
-        {/* Mobile: 9:16 aspect ratio */}
-        <div className="block sm:hidden w-full h-full">
-          <div 
-            className="w-full mx-auto bg-gray-800 relative"
-            style={{ 
-              height: '100vh',
-              aspectRatio: '9/16'
-            }}
-          >
-            <VehicleViewer360 vehicleId={id!} type="property" />
-          </div>
-        </div>
-        
-        {/* Desktop: 16:9 aspect ratio */}
-        <div className="hidden sm:block w-full h-full">
-          <div 
-            className="w-full h-full bg-gray-800 relative"
-            style={{ 
-              height: '100vh',
-              aspectRatio: '16/9'
-            }}
-          >
-            <VehicleViewer360 vehicleId={id!} type="property" />
-          </div>
-        </div>
+      {/* Viewer container - full height */}
+      <div className="w-full h-full">
+        <VehicleViewer360 vehicleId={id!} type="property" />
       </div>
     </div>
   );

@@ -43,7 +43,7 @@ const VehicleViewer360 = ({ vehicleId, type = 'vehicle' }: VehicleViewer360Props
           </div>
         </div>
       ) : (
-        <div className="h-full w-full flex flex-col">
+        <div className="h-full w-full">
           {/* Instructions très compactes */}
           <div className="absolute top-1 left-1 sm:top-2 sm:left-2 bg-black/60 px-2 py-1 rounded text-white text-xs z-10 transition-opacity duration-300 hover:opacity-70">
             <p className="hidden sm:block">
@@ -54,7 +54,7 @@ const VehicleViewer360 = ({ vehicleId, type = 'vehicle' }: VehicleViewer360Props
           
           <PanoramaViewer 
             imageUrl={sphericalImageUrl}
-            className="flex-1 w-full h-full"
+            className="w-full h-full"
           />
         </div>
       )}
